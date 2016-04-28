@@ -59,7 +59,11 @@ import qualified Opaleye.Internal.HaskellDB.PrimQuery as Op
 import qualified Opaleye.Internal.Join as Op
 import qualified Opaleye.Internal.Order as Op
 import qualified Opaleye.Internal.PackMap as Op
+#if __GLASGOW_HASKELL__ >= 800
 import qualified Opaleye.Internal.PrimQuery as Op (PrimQuery' (Join), JoinType (LeftJoin))
+#else
+import qualified Opaleye.Internal.PrimQuery as Op (PrimQuery (Join), JoinType (LeftJoin))
+#endif
 import qualified Opaleye.Internal.RunQuery as Op
 import qualified Opaleye.Internal.Table as Op
 import qualified Opaleye.Internal.TableMaker as Op
